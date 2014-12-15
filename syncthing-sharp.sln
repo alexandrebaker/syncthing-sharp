@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiscoveryServer", "Discover
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.DiscoveryServer", "DiscoveryServer\Syncthing.DiscoveryServer\Syncthing.DiscoveryServer.csproj", "{F391E929-EBAB-418D-B391-B153CA3591DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Protocol", "Syncthing.Protocol\Syncthing.Protocol.csproj", "{769C0580-0025-471F-B712-A07B08768B30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Protocol", "Internal\Syncthing.Protocol\Syncthing.Protocol.csproj", "{769C0580-0025-471F-B712-A07B08768B30}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{83AEFC39-2FC7-4CB4-B5FD-12FC4BE935A1}"
 EndProject
