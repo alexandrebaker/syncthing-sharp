@@ -26,16 +26,27 @@ namespace Syncthing.Protocol
     }
 
     [Flags]
-    public enum Asdf
+    public enum CommunicationFlags : uint
     {
         ShareTrusted = 1 << 0,
         ShareReadOnly = 1 << 1,
         Introducer = 1 << 2,
         ShareBits = 0x000000ff,
+    }
+}
 
-        Deleted = 1 << 12,
-        Invalid = 1 << 13,
-        Directory = 1 << 14,
-        NoPermBits = 1 << 15,
+namespace Syncthing.Protocol.Messages
+{
+    public abstract partial class BaseFileInfo
+    {
+        public const long BlockSize = 128 * 1024;
+
+        public const uint Deleted = 1 << 12;
+        public const uint Invalid = 1 << 13;
+        public const uint Directory = 1 << 14;
+        public const uint NoPermBits = 1 << 15;
+        public const uint Symlink = 1 << 16;
+        public const uint SymlinkMissingTarget = 1 << 17;
+        public const uint SymlinkTypeMask = Directory | SymlinkMissingTarget;
     }
 }

@@ -47,14 +47,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseCounting.cs" />
-    <Compile Include="CountingReader.cs" />
-    <Compile Include="CountingWriter.cs" />
+    <Compile Include="IO\BaseCounting.cs" />
+    <Compile Include="Messages\BlockInfo.cs" />
+    <Compile Include="IO\CountingReader.cs" />
+    <Compile Include="IO\CountingWriter.cs" />
     <Compile Include="DeviceId\DeviceId.cs" />
     <Compile Include="DeviceId\DeviceIdUtils.cs" />
-    <Compile Include="EnumDefinitions.cs" />
+    <Compile Include="Definitions.cs" />
+    <Compile Include="Messages\CloseMessage.cs" />
+    <Compile Include="Messages\ClusterConfigMessage.cs" />
+    <Compile Include="Messages\Device.cs" />
+    <Compile Include="Messages\FileInfo.cs" />
+    <Compile Include="Messages\FileInfoTruncated.cs" />
+    <Compile Include="Messages\Folder.cs" />
+    <Compile Include="Messages\Header.cs" />
     <Compile Include="Luhn\Alphabet.cs" />
     <Compile Include="Luhn\LuhnAlphabetException.cs" />
+    <Compile Include="Messages\IMessage.cs" />
+    <Compile Include="Messages\IndexMessage.cs" />
+    <Compile Include="Messages\Option.cs" />
+    <Compile Include="Messages\RequestMessage.cs" />
+    <Compile Include="Messages\ResponseMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol.cs" />
     <Compile Include="Utils\LZ4Compression.cs" />
