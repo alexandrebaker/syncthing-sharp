@@ -1,4 +1,6 @@
 *.suo
 *.userprefs
+*.user
 obj/
 bin/
+packages/
