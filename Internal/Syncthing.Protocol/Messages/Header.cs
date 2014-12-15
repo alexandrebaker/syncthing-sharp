@@ -30,6 +30,41 @@ namespace Syncthing.Protocol.Messages
         public bool Compression { get; set; }
 
         /// <summary>
+        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+        /// </summary>
+        /// <returns>
+        /// true if the specified object  is equal to the current object; otherwise, false.
+        /// </returns>
+        /// <param name="obj">The object to compare with the current object. </param>
+        public override bool Equals(object obj)
+        {
+            return obj.GetType() == GetType() && Equals((Header)obj);
+        }
+
+        protected bool Equals(Header other)
+        {
+            return Version == other.Version && MessageId == other.MessageId && MessageType == other.MessageType && Compression.Equals(other.Compression);
+        }
+
+        /// <summary>
+        /// Serves as a hash function for a particular type. 
+        /// </summary>
+        /// <returns>
+        /// A hash code for the current <see cref="T:System.Object"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = Version;
+                hashCode = (hashCode * 397) ^ MessageId;
+                hashCode = (hashCode * 397) ^ MessageType;
+                hashCode = (hashCode * 397) ^ Compression.GetHashCode();
+                return hashCode;
+            }
+        }
+
+        /// <summary>
         /// Encode <see cref="Header"/> into uint.
         /// </summary>
         /// <param name="h"></param>
@@ -62,9 +97,9 @@ namespace Syncthing.Protocol.Messages
                 isComp = 1 << 0; // the zeroth bit is the compression bit
 
             return (uint) (
-                (Version & 0xf) << 28 +
-                (MessageId & 0xfff) << 16 +
-                (MessageType & 0xff) << 8) +
+                ((Version & 0xf) << 28 )+
+                ((MessageId & 0xfff) << 16) +
+                ((MessageType & 0xff) << 8)) +
                    isComp;
         }
     }

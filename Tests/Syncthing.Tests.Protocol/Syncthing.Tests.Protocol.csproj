@@ -53,9 +53,10 @@
     <Compile Include="LuhnAlphabetTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DeviceIdTest.cs" />
+    <Compile Include="MessagesTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Syncthing.Protocol\Syncthing.Protocol.csproj">
+    <ProjectReference Include="..\..\Internal\Syncthing.Protocol\Syncthing.Protocol.csproj">
       <Project>{769c0580-0025-471f-b712-a07b08768b30}</Project>
       <Name>Syncthing.Protocol</Name>
     </ProjectReference>
