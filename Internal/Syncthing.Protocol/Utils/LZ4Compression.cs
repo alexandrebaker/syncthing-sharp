@@ -8,35 +8,42 @@ namespace Syncthing.Protocol.Utils
     /// </summary>
     public class Lz4Compression
     {
-        private const int MaxBufferLength = 1024 * 1024 * 8;
+        public const int MaxBufferLength = 1024 * 1024 * 8;
 
         /// <summary>
-        /// Compress data to LZ4/
+        /// Compress data to LZ4.
         /// </summary>
         /// <param name="uncompressed"></param>
         /// <returns></returns>
         public static byte[] Compress(byte[] uncompressed)
         {
             if (uncompressed == null || uncompressed.Length == 0)
-                throw new ArgumentException("uncompressed data is null or size is 0");
+                throw new ArgumentException("Uncompressed data is null or size is 0.");
+
+            if (uncompressed.Length > MaxBufferLength)
+                throw new DataTooLargeException();
 
             return LZ4Codec.Wrap(uncompressed, 0, uncompressed.Length);
         }
 
         /// <summary>
-        /// Decompress LZ4 data/
+        /// Decompress LZ4 data.
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="compressed"></param>
         /// <returns></returns>
-        public static byte[] Decompress(byte[] data)
+        public static byte[] Decompress(byte[] compressed)
         {
-            long decompressedLength = Peek4(data, 0);
+            if (compressed == null || compressed.Length == 0)
+                throw new ArgumentException("Compressed data is null or size is 0.");
+
+            long decompressedLength = Peek4(compressed, 0);
+
             if (decompressedLength > MaxBufferLength)
-                throw new DecompressedDataTooLargeException();
+                throw new DataTooLargeException();
 
             try
             {
-                return LZ4Codec.Unwrap(data);
+                return LZ4Codec.Unwrap(compressed);
             }
             catch (Exception exception)
             {
@@ -45,22 +52,25 @@ namespace Syncthing.Protocol.Utils
         }
 
         /// <summary>
-        /// Peek the 4 first bytes/
+        /// Peek the 4 first bytes.
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        private static uint Peek4(byte[] buffer, int offset)
+        public static uint Peek4(byte[] buffer, int offset)
         {
-            return (uint)((int)buffer[offset] | (int)buffer[offset + 1] << 8 | (int)buffer[offset + 2] << 16 | (int)buffer[offset + 3] << 24);
+            return (uint)(buffer[offset] |
+                            buffer[offset + 1] << 8 | 
+                            buffer[offset + 2] << 16 | 
+                            buffer[offset + 3] << 24);
         }
 
         /// <summary>
-        /// Exception if the data is bigger than the alowed buffer/
+        /// Exception if the data is bigger than the alowed buffer.
         /// </summary>
-        public class DecompressedDataTooLargeException : Exception
+        public class DataTooLargeException : Exception
         {
-            public DecompressedDataTooLargeException() : base("Decompressed data exceeds maximum size") { }
+            public DataTooLargeException() : base("Data exceeds maximum size") { }
         }
 
         /// <summary>
@@ -68,7 +78,7 @@ namespace Syncthing.Protocol.Utils
         /// </summary>
         public class InvalidLz4DataExcetion : Exception
         {
-            public InvalidLz4DataExcetion(Exception inner) : base("Decompressed data exceeds maximum size", inner) { }
+            public InvalidLz4DataExcetion(Exception inner) : base("Error occur during Lz4 decompression process.",inner) { }
         }
     }
 }
