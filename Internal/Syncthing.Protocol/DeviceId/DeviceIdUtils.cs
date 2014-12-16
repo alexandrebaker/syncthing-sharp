@@ -4,16 +4,41 @@ using System.Text.RegularExpressions;
 
 namespace Syncthing.Protocol
 {
+    /// <summary>
+    /// Device identifier utils.
+    /// </summary>
     internal static class DeviceIdUtils
     {
+        /// <summary>
+        /// The length of the unluhnified string.
+        /// </summary>
         internal const int UnluhnifiedStringLength = 52;
+
+        /// <summary>
+        /// The length of the unluhnified split.
+        /// </summary>
         internal const int UnLuhnifiedSplitLength = 13;
 
+        /// <summary>
+        /// The length of the luhnified string.
+        /// </summary>
         internal const int LuhnifiedStringLength = 56;
+
+        /// <summary>
+        /// The length of the luhnified split.
+        /// </summary>
         internal const int LuhnifiedSplitLength = 14;
 
+        /// <summary>
+        /// The trailing equal.
+        /// </summary>
         internal const string TrailingEqual = "====";
 
+        /// <summary>
+        /// Devices the identifier from string.
+        /// </summary>
+        /// <returns>The identifier from string.</returns>
+        /// <param name="s">S.</param>
         internal static DeviceId DeviceIdFromString(string s)
         {
             var n = new DeviceId();
@@ -21,28 +46,49 @@ namespace Syncthing.Protocol
             return n;
         }
 
+        /// <summary>
+        /// Devices the identifier from bytes.
+        /// </summary>
+        /// <returns>The identifier from bytes.</returns>
+        /// <param name="bs">Bs.</param>
         internal static DeviceId DeviceIdFromBytes(byte[] bs)
         {
             return new DeviceId(bs);
         }
 
+        /// <summary>
+        /// Chunkify the specified s.
+        /// </summary>
+        /// <param name="s">S.</param>
         internal static string Chunkify(string s)
         {
             var tmp = new Regex("(.{7})", RegexOptions.Compiled).Replace(s, "$1-");
             return tmp.Trim('-');
         }
 
+        /// <summary>
+        /// Unchukify the specified s.
+        /// </summary>
+        /// <returns>The chukify.</returns>
+        /// <param name="s">S.</param>
         internal static string UnChukify(string s)
         {
             return s.Replace("-", String.Empty).Replace(" ", String.Empty);
         }
 
+        /// <summary>
+        /// Untypeoify the specified s.
+        /// </summary>
+        /// <param name="s">S.</param>
         internal static string Untypeoify(string s)
         {
             return s.Replace("0", "O").Replace("1", "I").Replace("8", "B");
         }
 
-
+        /// <summary>
+        /// Luhnify the specified s.
+        /// </summary>
+        /// <param name="s">S.</param>
         internal static string Luhnify(string s)
         {
             if (s.Length != UnluhnifiedStringLength)
@@ -54,13 +100,18 @@ namespace Syncthing.Protocol
             for (int i = 0; i < 4; i++)
             {
                 var p = s.Substring(i * UnLuhnifiedSplitLength, UnLuhnifiedSplitLength);
-                var l = new Luhn.Alphabet().Generate(p);
+                var l = new Luhn.Formula().Generate(p);
 
                 result[i] = p + l;
             }
             return result[0] + result[1] + result[2] + result[3];
         }
 
+        /// <summary>
+        /// Unluhnify the specified s.
+        /// </summary>
+        /// <returns>The luhnify.</returns>
+        /// <param name="s">S.</param>
         internal static string UnLuhnify(string s)
         {
             if (s.Length != LuhnifiedStringLength)
@@ -72,7 +123,7 @@ namespace Syncthing.Protocol
             for (int i = 0; i < 4; i++)
             {
                 var p = s.Substring(i * LuhnifiedSplitLength, LuhnifiedSplitLength - 1);
-                var l = new Luhn.Alphabet().Generate(p);
+                var l = new Luhn.Formula().Generate(p);
 
 
                 if ((p + l) != s.Substring(i * LuhnifiedSplitLength, LuhnifiedSplitLength))
@@ -86,6 +137,12 @@ namespace Syncthing.Protocol
         // Copyright (c) 2008-2013 Hafthor Stefansson
         // Distributed under the MIT/X11 software license
         // Ref: http://www.opensource.org/licenses/mit-license.php.
+        /// <summary>
+        /// Unsafes the compare.
+        /// </summary>
+        /// <returns><c>true</c>, if compare was unsafed, <c>false</c> otherwise.</returns>
+        /// <param name="a1">A1.</param>
+        /// <param name="a2">A2.</param>
         internal static unsafe bool UnsafeCompare(byte[] a1, byte[] a2)
         {
             if (a1 == null || a2 == null || a1.Length != a2.Length)
@@ -102,14 +159,16 @@ namespace Syncthing.Protocol
                 {
                     if (*((int*)x1) != *((int*)x2))
                         return false;
-                    x1 += 4; x2 += 4;
+                    x1 += 4;
+                    x2 += 4;
                 }
 
                 if ((l & 2) != 0)
                 {
                     if (*((short*)x1) != *((short*)x2))
                         return false;
-                    x1 += 2; x2 += 2;
+                    x1 += 2;
+                    x2 += 2;
                 }
 
                 if ((l & 1) == 0)

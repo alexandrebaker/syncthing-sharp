@@ -2,10 +2,20 @@
 
 namespace Syncthing.Protocol.Messages
 {
+    /// <summary>
+    /// File info.
+    /// </summary>
     public class FileInfo : BaseFileInfo
     {
+        /// <summary>
+        /// Gets or sets the blocks.
+        /// </summary>
+        /// <value>The blocks.</value>
         public BlockInfo[] Blocks { get; set; }
 
+        /// <summary>
+        /// Size this instance.
+        /// </summary>
         public override long Size()
         {
             if (IsDeleted() || IsDirectory())

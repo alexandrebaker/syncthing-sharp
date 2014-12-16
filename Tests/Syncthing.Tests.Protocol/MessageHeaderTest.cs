@@ -1,21 +1,21 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Syncthing.Protocol.Messages;
 
 
 namespace Syncthing.Tests.Protocol
 {
-    [TestClass]
+    [TestFixture()]
     public class MessageHeaderTest
     {
-        [TestMethod]
+        [Test()]
         public void TestHeaderFunctions()
         {
             Func<int, int, int, bool> func = (ver, id, typ) =>
             {
-                ver = ver%16;
-                id = id%4096;
-                typ = typ%256;
+                ver = ver % 16;
+                id = id % 4096;
+                typ = typ % 256;
 
                 var h0 = new Header
                 {
@@ -31,21 +31,21 @@ namespace Syncthing.Tests.Protocol
             // test the Decode and Encode for header 100 time with random values.
             for (int i = 0; i <= 100; i++)
             {
-                Random rnd = new Random(DateTime.Now.Millisecond*DateTime.UtcNow.Millisecond);
+                Random rnd = new Random(DateTime.Now.Millisecond * DateTime.UtcNow.Millisecond);
                 Assert.IsTrue(func(rnd.Next(), rnd.Next(), rnd.Next()));
             }
         }
 
-        [TestMethod]
+        [Test()]
         public void TestHeaderLayout4Bits()
         {
             // Version are the first four bits
             const uint e = 0xf0000000;
-            uint a = Header.Encode(new Header {Version = 0xf});
+            uint a = Header.Encode(new Header { Version = 0xf });
             Assert.AreEqual(e, a, String.Format("Header layout incorrect; {0:X} != {1:X}", a, e));
         }
 
-        [TestMethod]
+        [Test()]
         public void TestHeaderLayout8Bits()
         {
             // Version are the first four bits
@@ -54,7 +54,7 @@ namespace Syncthing.Tests.Protocol
             Assert.AreEqual(e, a, String.Format("Header layout incorrect; {0:X} != {1:X}", a, e));
         }
 
-        [TestMethod]
+        [Test()]
         public void TestHeaderLayout12Bits()
         {
             // Version are the first four bits

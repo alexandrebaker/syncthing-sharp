@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Text;
 using LZ4;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Syncthing.Protocol.Utils;
 
 namespace Syncthing.Tests.Protocol
 {
-    [TestClass]
+    [TestFixture]
     public class Lz4CompressionTest
     {
         private const string TextForTest =
             "This is a simple text, use it to make round trip compression with Lz4 algorithm.";
 
 
-        [TestMethod]
+        [Test()]
         public void Lz4Peek4Test()
         {
             byte[] raw = Encoding.UTF8.GetBytes(TextForTest);
@@ -22,10 +22,10 @@ namespace Syncthing.Tests.Protocol
             uint rawLength = (uint)raw.Length;
             uint rawLengthFromcompressedData = Lz4Compression.Peek4(compressed, 0);
 
-            Assert.AreEqual(rawLength,rawLengthFromcompressedData, "Unable to peek the length of the raw data from the compressed data.");
+            Assert.AreEqual(rawLength, rawLengthFromcompressedData, "Unable to peek the length of the raw data from the compressed data.");
         }
 
-        [TestMethod]
+        [Test()]
         public void Lz4RoundTripTest()
         {
             byte[] raw = Encoding.UTF8.GetBytes(TextForTest);
@@ -37,7 +37,7 @@ namespace Syncthing.Tests.Protocol
 
         }
 
-        [TestMethod]
+        [Test()]
         [ExpectedException(typeof(ArgumentException))]
         public void Lz4CompressionErrorTest()
         {
@@ -45,7 +45,7 @@ namespace Syncthing.Tests.Protocol
             Lz4Compression.Compress(raw);
         }
 
-        [TestMethod]
+        [Test()]
         [ExpectedException(typeof(ArgumentException))]
         public void Lz4DecompressionErrorTest()
         {
@@ -53,7 +53,7 @@ namespace Syncthing.Tests.Protocol
             Lz4Compression.Decompress(compressed);
         }
 
-        [TestMethod]
+        [Test()]
         [ExpectedException(typeof(Lz4Compression.DataTooLargeException))]
         public void Lz4CompressionLimitTest()
         {
@@ -62,7 +62,8 @@ namespace Syncthing.Tests.Protocol
 
             Lz4Compression.Compress(raw);
         }
-        [TestMethod]
+
+        [Test()]
         [ExpectedException(typeof(Lz4Compression.DataTooLargeException))]
         public void Lz4DecompressionLimitTest()
         {

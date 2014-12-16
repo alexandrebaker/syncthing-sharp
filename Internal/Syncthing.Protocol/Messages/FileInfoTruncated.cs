@@ -1,10 +1,20 @@
 ﻿
 namespace Syncthing.Protocol.Messages
 {
+    /// <summary>
+    /// File info truncated.
+    /// </summary>
     public class FileInfoTruncated : BaseFileInfo
     {
+        /// <summary>
+        /// Gets or sets the number blocks.
+        /// </summary>
+        /// <value>The number blocks.</value>
         public uint NumBlocks { get; set; }
 
+        /// <summary>
+        /// Size this instance.
+        /// </summary>
         public override long Size()
         {
             if (IsDeleted() || IsDirectory())

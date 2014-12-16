@@ -7,20 +7,30 @@ using Base32;
 
 namespace Syncthing.Protocol
 {
+    /// <summary>
+    /// Device identifier.
+    /// </summary>
     public class DeviceId : IComparable<DeviceId>
     {
         private const int BytesArrayLength = 32;
 
+        /// <summary>
+        /// The local device identifier.
+        /// </summary>
         public static readonly DeviceId LocalDeviceId = new DeviceId(0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-            0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-            0xff, 0xff, 0xff, 0xff);
+                                                            0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+                                                            0xff, 0xff, 0xff, 0xff);
 
+        /// <summary>
+        /// Gets the bytes.
+        /// </summary>
+        /// <value>The bytes.</value>
         protected byte[] Bytes { get; private set; }
 
         /// <summary>
-        /// Initialize new Devide Id
+        /// Initializes a new instance of the <see cref="Syncthing.Protocol.DeviceId"/> class.
         /// </summary>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">Device identifier.</param>
         public DeviceId(params byte[] deviceId)
         {
             if (deviceId.Length != BytesArrayLength)
@@ -30,9 +40,11 @@ namespace Syncthing.Protocol
         }
 
         /// <summary>
-        /// Internal constructor
+        /// Initializes a new instance of the <see cref="Syncthing.Protocol.DeviceId"/> class.
         /// </summary>
-        internal DeviceId() { }
+        internal DeviceId()
+        {
+        }
 
         /// <summary>
         /// UnMarshal the byte into a device id.

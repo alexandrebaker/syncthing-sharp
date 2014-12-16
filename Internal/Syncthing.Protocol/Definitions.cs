@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Syncthing.Protocol
 {
+    /// <summary>
+    /// Message type.
+    /// </summary>
     public enum MessageType
     {
         ClusterConfig = 0,
@@ -18,6 +21,9 @@ namespace Syncthing.Protocol
         TypeClose = 7
     }
 
+    /// <summary>
+    /// State.
+    /// </summary>
     public enum State
     {
         Initial = 1,
@@ -25,6 +31,9 @@ namespace Syncthing.Protocol
         IdxRcvd = 3
     }
 
+    /// <summary>
+    /// Communication flags.
+    /// </summary>
     [Flags]
     public enum CommunicationFlags : uint
     {
@@ -37,10 +46,13 @@ namespace Syncthing.Protocol
 
 namespace Syncthing.Protocol.Messages
 {
+    /// <summary>
+    /// Base file info.
+    /// </summary>
     public abstract partial class BaseFileInfo
     {
         public const long BlockSize = 128 * 1024;
-
+  
         public const uint Deleted = 1 << 12;
         public const uint Invalid = 1 << 13;
         public const uint Directory = 1 << 14;

@@ -8,13 +8,15 @@ namespace Syncthing.Protocol.Utils
     /// </summary>
     public class Lz4Compression
     {
+        /// <summary>
+        /// The length of the max buffer.
+        /// </summary>
         public const int MaxBufferLength = 1024 * 1024 * 8;
 
         /// <summary>
-        /// Compress data to LZ4.
+        /// Compress the specified uncompressed data into Lz4.
         /// </summary>
-        /// <param name="uncompressed"></param>
-        /// <returns></returns>
+        /// <param name="uncompressed">Uncompressed.</param>
         public static byte[] Compress(byte[] uncompressed)
         {
             if (uncompressed == null || uncompressed.Length == 0)
@@ -27,10 +29,9 @@ namespace Syncthing.Protocol.Utils
         }
 
         /// <summary>
-        /// Decompress LZ4 data.
+        /// Decompress the specified compressed bytes.
         /// </summary>
-        /// <param name="compressed"></param>
-        /// <returns></returns>
+        /// <param name="compressed">Compressed.</param>
         public static byte[] Decompress(byte[] compressed)
         {
             if (compressed == null || compressed.Length == 0)
@@ -54,15 +55,14 @@ namespace Syncthing.Protocol.Utils
         /// <summary>
         /// Peek the 4 first bytes.
         /// </summary>
-        /// <param name="buffer"></param>
-        /// <param name="offset"></param>
-        /// <returns></returns>
+        /// <param name="buffer">Buffer.</param>
+        /// <param name="offset">Offset.</param>
         public static uint Peek4(byte[] buffer, int offset)
         {
             return (uint)(buffer[offset] |
-                            buffer[offset + 1] << 8 | 
-                            buffer[offset + 2] << 16 | 
-                            buffer[offset + 3] << 24);
+            buffer[offset + 1] << 8 |
+            buffer[offset + 2] << 16 |
+            buffer[offset + 3] << 24);
         }
 
         /// <summary>
@@ -70,7 +70,10 @@ namespace Syncthing.Protocol.Utils
         /// </summary>
         public class DataTooLargeException : Exception
         {
-            public DataTooLargeException() : base("Data exceeds maximum size") { }
+            public DataTooLargeException()
+                : base("Data exceeds maximum size")
+            {
+            }
         }
 
         /// <summary>
@@ -78,7 +81,10 @@ namespace Syncthing.Protocol.Utils
         /// </summary>
         public class InvalidLz4DataExcetion : Exception
         {
-            public InvalidLz4DataExcetion(Exception inner) : base("Error occur during Lz4 decompression process.",inner) { }
+            public InvalidLz4DataExcetion(Exception inner)
+                : base("Error occur during Lz4 decompression process.", inner)
+            {
+            }
         }
     }
 }

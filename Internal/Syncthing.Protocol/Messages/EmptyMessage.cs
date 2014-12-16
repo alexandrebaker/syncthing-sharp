@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Syncthing.Protocol.Messages
 {
+    /// <summary>
+    /// Empty message.
+    /// </summary>
     public class EmptyMessage : IMessage
     {
     }

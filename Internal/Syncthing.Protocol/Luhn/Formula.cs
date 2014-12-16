@@ -4,24 +4,34 @@ using System.Text;
 
 namespace Syncthing.Protocol.Luhn
 {
-    public class Alphabet
+    /// <summary>
+    /// Formula.
+    /// </summary>
+    public class Formula
     {
         private readonly string _base32Alphabet = Utf8Encode("ABCDEFGHIJKLMNOPQRSTUVWXYZ234567");
         private readonly string _alphabet;
 
-        public Alphabet(string alphabet)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Syncthing.Protocol.Luhn.Formula"/> class.
+        /// </summary>
+        /// <param name="alphabet">Alphabet.</param>
+        public Formula(string alphabet)
         {
             if (string.IsNullOrEmpty(alphabet))
-                throw new LuhnAlphabetException("The alphabet cannot be null or empty string.");
+                throw new LuhnFormulaException("The alphabet cannot be null or empty string.");
 
             Check(alphabet);
             _alphabet = alphabet;
         }
 
-        public Alphabet()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Syncthing.Protocol.Luhn.Formula"/> class.
+        /// </summary>
+        public Formula()
         {
             if (string.IsNullOrEmpty(_base32Alphabet))
-                throw new LuhnAlphabetException("The alphabet cannot be null or empty string.");
+                throw new LuhnFormulaException("The alphabet cannot be null or empty string.");
 
             Check(_base32Alphabet);
             _alphabet = _base32Alphabet;
@@ -62,10 +72,9 @@ namespace Syncthing.Protocol.Luhn
         }
 
         /// <summary>
-        ///  Validate returns true if the last character of the string s is correct.
+        /// Validate returns true if the last character of the string s is correct.
         /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
+        /// <param name="s">S.</param>
         public bool Validate(string s)
         {
             int factor = 1;
@@ -92,30 +101,50 @@ namespace Syncthing.Protocol.Luhn
             return remainder == 0;
         }
 
+        /// <summary>
+        /// Check the specified alphabet.
+        /// </summary>
+        /// <param name="alphabet">Alphabet.</param>
         public void Check(string alphabet)
         {
             string str = string.Empty;
             foreach (char t in alphabet)
             {
                 if (str.Contains(t.ToString(CultureInfo.InvariantCulture)))
-                    throw new LuhnAlphabetException(string.Format("Digit {0} non-unique in alphabet {1}", t, alphabet));
+                    throw new LuhnFormulaException(string.Format("Digit {0} non-unique in alphabet {1}", t, alphabet));
                 str += t;
             }
         }
 
+        /// <summary>
+        /// Codes the point from character.
+        /// </summary>
+        /// <returns>The point from character.</returns>
+        /// <param name="c">C.</param>
         private int CodePointFromCharacter(char c)
         {
-            var codepoint = _alphabet.IndexOf(c); ;
-                if (codepoint == -1)
-                    throw new LuhnAlphabetException(string.Format("Digit {0} not valid in alphabet {1}", c, _alphabet));
+            var codepoint = _alphabet.IndexOf(c);
+            ;
+            if (codepoint == -1)
+                throw new LuhnFormulaException(string.Format("Digit {0} not valid in alphabet {1}", c, _alphabet));
             return codepoint;
         }
 
+        /// <summary>
+        /// Characters from code point.
+        /// </summary>
+        /// <returns>The from code point.</returns>
+        /// <param name="cp">Cp.</param>
         private char CharacterFromCodePoint(int cp)
         {
             return _alphabet[cp];
         }
 
+        /// <summary>
+        /// UTF8s the encode.
+        /// </summary>
+        /// <returns>The encode.</returns>
+        /// <param name="val">Value.</param>
         private static string Utf8Encode(string val)
         {
             byte[] bytes = Encoding.Default.GetBytes(val);

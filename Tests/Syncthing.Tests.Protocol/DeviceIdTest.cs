@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Syncthing.Protocol;
 
 namespace Syncthing.Tests.Protocol
 {
-    [TestClass]
+    [TestFixture]
     public class DeviceIdTest
     {
         private readonly string _formatted = "P56IOI7-MZJNU2Y-IQGDREY-DM2MGTI-MGL3BXN-PQ6W5BM-TBBZ4TJ-XZWICQ2";
-        private readonly string[] _formatCases = {
+        private readonly string[] _formatCases =
+            {
             "P56IOI-7MZJNU-2IQGDR-EYDM2M-GTMGL3-BXNPQ6-W5BTBB-Z4TJXZ-WICQ",
             "P56IOI-7MZJNU2Y-IQGDR-EYDM2M-GTI-MGL3-BXNPQ6-W5BM-TBB-Z4TJXZ-WICQ2",
             "P56IOI7 MZJNU2I QGDREYD M2MGTMGL 3BXNPQ6W 5BTB BZ4T JXZWICQ",
@@ -24,7 +25,7 @@ namespace Syncthing.Tests.Protocol
         };
 
 
-        [TestMethod]
+        [Test]
         public void TestFormatDeviceId()
         {
             foreach (var @case in _formatCases)
@@ -38,7 +39,7 @@ namespace Syncthing.Tests.Protocol
         }
 
         private readonly Tuple<string, bool>[] _validCases =
-        {
+            {
             new Tuple<string, bool>("", false),
             new Tuple<string, bool>("P56IOI7-MZJNU2Y-IQGDREY-DM2MGTI-MGL3BXN-PQ6W5BM-TBBZ4TJ-XZWICQ2", true),
             new Tuple<string, bool>("P56IOI7-MZJNU2-IQGDREY-DM2MGT-MGL3BXN-PQ6W5B-TBBZ4TJ-XZWICQ", true),
@@ -49,7 +50,7 @@ namespace Syncthing.Tests.Protocol
 	        new Tuple<string, bool>("p56ioi7mzjnu2iqgdreydm2mgtmgl3bxnpq6w5btbbz4tjxzwicqCCCC", false)
         };
 
-        [TestMethod]
+        [Test]
         public void TestValidateDeviceId()
         {
             int count = 0;
@@ -73,7 +74,7 @@ namespace Syncthing.Tests.Protocol
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestMarshallingDeviceId()
         {
             var n0 = new DeviceId(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 10, 21, 22, 23, 24,

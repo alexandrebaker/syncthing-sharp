@@ -1,21 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio 2012
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{C034ED3C-34DC-4AC0-8C74-0EEB7BF6E172}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Net", "Internal\Syncthing.Net\Syncthing.Net.csproj", "{131659DF-C3BC-490D-8358-E2A07DA28434}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Protocol", "Internal\Syncthing.Protocol\Syncthing.Protocol.csproj", "{769C0580-0025-471F-B712-A07B08768B30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.IO", "Internal\Syncthing.IO\Syncthing.IO.csproj", "{18579551-8987-4EA5-8DCA-6AD65FFDEB50}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiscoveryServer", "DiscoveryServer", "{8981524B-3EEB-46FA-A0B6-062642F692F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.DiscoveryServer", "DiscoveryServer\Syncthing.DiscoveryServer\Syncthing.DiscoveryServer.csproj", "{F391E929-EBAB-418D-B391-B153CA3591DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Protocol", "Internal\Syncthing.Protocol\Syncthing.Protocol.csproj", "{769C0580-0025-471F-B712-A07B08768B30}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{83AEFC39-2FC7-4CB4-B5FD-12FC4BE935A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Tests.Protocol", "Tests\Syncthing.Tests.Protocol\Syncthing.Tests.Protocol.csproj", "{0B4D0C13-D039-4CB7-A8A4-45BC270A05ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Tests.Protocol", "Tests\Syncthing.Tests.Protocol\Syncthing.Tests.Protocol.csproj", "{5671EDCC-A810-4333-9755-FB184E18EEFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,29 +29,34 @@ Global
 		{131659DF-C3BC-490D-8358-E2A07DA28434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{131659DF-C3BC-490D-8358-E2A07DA28434}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{131659DF-C3BC-490D-8358-E2A07DA28434}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F391E929-EBAB-418D-B391-B153CA3591DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F391E929-EBAB-418D-B391-B153CA3591DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F391E929-EBAB-418D-B391-B153CA3591DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F391E929-EBAB-418D-B391-B153CA3591DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18579551-8987-4EA5-8DCA-6AD65FFDEB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18579551-8987-4EA5-8DCA-6AD65FFDEB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18579551-8987-4EA5-8DCA-6AD65FFDEB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18579551-8987-4EA5-8DCA-6AD65FFDEB50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5671EDCC-A810-4333-9755-FB184E18EEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5671EDCC-A810-4333-9755-FB184E18EEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5671EDCC-A810-4333-9755-FB184E18EEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5671EDCC-A810-4333-9755-FB184E18EEFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{769C0580-0025-471F-B712-A07B08768B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{769C0580-0025-471F-B712-A07B08768B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769C0580-0025-471F-B712-A07B08768B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{769C0580-0025-471F-B712-A07B08768B30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B4D0C13-D039-4CB7-A8A4-45BC270A05ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B4D0C13-D039-4CB7-A8A4-45BC270A05ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B4D0C13-D039-4CB7-A8A4-45BC270A05ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B4D0C13-D039-4CB7-A8A4-45BC270A05ED}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		{F391E929-EBAB-418D-B391-B153CA3591DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F391E929-EBAB-418D-B391-B153CA3591DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F391E929-EBAB-418D-B391-B153CA3591DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F391E929-EBAB-418D-B391-B153CA3591DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{131659DF-C3BC-490D-8358-E2A07DA28434} = {C034ED3C-34DC-4AC0-8C74-0EEB7BF6E172}
-		{F391E929-EBAB-418D-B391-B153CA3591DD} = {8981524B-3EEB-46FA-A0B6-062642F692F8}
 		{769C0580-0025-471F-B712-A07B08768B30} = {C034ED3C-34DC-4AC0-8C74-0EEB7BF6E172}
-		{0B4D0C13-D039-4CB7-A8A4-45BC270A05ED} = {83AEFC39-2FC7-4CB4-B5FD-12FC4BE935A1}
+		{18579551-8987-4EA5-8DCA-6AD65FFDEB50} = {C034ED3C-34DC-4AC0-8C74-0EEB7BF6E172}
+		{F391E929-EBAB-418D-B391-B153CA3591DD} = {8981524B-3EEB-46FA-A0B6-062642F692F8}
+		{5671EDCC-A810-4333-9755-FB184E18EEFF} = {83AEFC39-2FC7-4CB4-B5FD-12FC4BE935A1}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Internal\Syncthing.Net\Syncthing.Net.csproj
+		StartupItem = Tests\Syncthing.Tests.Protocol\Syncthing.Tests.Protocol.csproj
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

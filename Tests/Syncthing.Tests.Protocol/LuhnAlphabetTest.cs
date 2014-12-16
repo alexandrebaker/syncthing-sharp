@@ -1,67 +1,67 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Luhn = Syncthing.Protocol.Luhn;
 
 namespace Syncthing.Tests.Protocol
 {
-    [TestClass]
+    [TestFixture]
     public class LuhnAlphabetTest
     {
-        [TestMethod]
+        [Test]
         public void TestGenerateBase6()
         {
             // Base 6 Luhn
-            var a = new Luhn.Alphabet("abcdef");
+            var a = new Luhn.Formula("abcdef");
             var c = Convert.ToChar(a.Generate("abcdef"));
 
             Assert.AreEqual(c, 'e', String.Format("Incorrect check digit {0} != e", c));
         }
 
-        [TestMethod]
+        [Test]
         public void TestGenerateBase10()
         {
-             // Base 10 Luhn
-            var a = new Luhn.Alphabet("0123456789");
+            // Base 10 Luhn
+            var a = new Luhn.Formula("0123456789");
             var c = Convert.ToChar(a.Generate("7992739871"));
 
-              Assert.AreEqual(c, '3', String.Format("Incorrect check digit {0} != 3", c));
+            Assert.AreEqual(c, '3', String.Format("Incorrect check digit {0} != 3", c));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(Luhn.LuhnAlphabetException))]
+        [Test]
+        [ExpectedException(typeof(Luhn.LuhnFormulaException))]
         public void TestInvalidInitializationString()
         {
-            var a = new Luhn.Alphabet("");
+            var a = new Luhn.Formula("");
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(Luhn.LuhnAlphabetException))]
+        [Test]
+        [ExpectedException(typeof(Luhn.LuhnFormulaException))]
         public void TestInvalidString()
         {
-            var a = new Luhn.Alphabet("ABC");
+            var a = new Luhn.Formula("ABC");
             var c = a.Generate("7992739871");
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(Luhn.LuhnAlphabetException))]
+        [Test]
+        [ExpectedException(typeof(Luhn.LuhnFormulaException))]
         public void TestBadAlphabet()
         {
-            var a = new Luhn.Alphabet("01234566789");
+            var a = new Luhn.Formula("01234566789");
             var c = a.Generate("7992739871");
         }
 
-        [TestMethod]
+        [Test]
         public void TestValidateTrue()
         {
-            var a = new Luhn.Alphabet("abcdef");
+            var a = new Luhn.Formula("abcdef");
 
             Assert.IsTrue(a.Validate("abcdefe"), "Incorrect validation response for abcdefe");
         }
 
-        [TestMethod]
+        [Test]
         public void TestValidateFalse()
         {
-            var a = new Luhn.Alphabet("abcdef");
+            var a = new Luhn.Formula("abcdef");
 
             Assert.IsFalse(a.Validate("abcdefd"), "Incorrect validation response for abcdefd");
         }

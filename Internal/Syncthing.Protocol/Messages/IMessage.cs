@@ -1,5 +1,11 @@
 ﻿
 namespace Syncthing.Protocol.Messages
 {
-    interface IMessage { }
+    /// <summary>
+    /// IMessage definition.
+    /// </summary>
+    interface IMessage
+    {
+       
+    }
 }

@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Syncthing.Protocol.Messages
 {
+    /// <summary>
+    /// Response message.
+    /// </summary>
     public class ResponseMessage : IMessage
     {
+        /// <summary>
+        /// Gets or sets the data.
+        /// </summary>
+        /// <value>The data.</value>
         public byte[] Data { get; set; }
     }
 }

@@ -3,34 +3,36 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Syncthing.Protocol
+namespace Syncthing.IO
 {
     /// <summary>
-    /// Reader that count bytes red
+    /// Counting reader.
     /// </summary>
     public class CountingReader : BaseCounting
     {
         /// <summary>
-        /// Initialize the Counting Reader
+        /// Initializes a new instance of the <see cref="Syncthing.IO.CountingReader"/> class.
         /// </summary>
-        /// <param name="reader"></param>
+        /// <param name="reader">Reader.</param>
         public CountingReader(Stream reader)
         {
-            Reader = reader;
+            InnerReader = reader;
         }
 
-
-        protected Stream Reader { get; set; }
+        /// <summary>
+        /// Gets or sets the inner reader.
+        /// </summary>
+        /// <value>The reader.</value>
+        protected Stream InnerReader { get; set; }
 
         /// <summary>
-        /// Read
+        /// Read the specified data.
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="data">Data.</param>
         public int Read([In, Out] byte[] data)
         {
             var n = data.Length;
-            Reader.Read(data, 0, n);
+            InnerReader.Read(data, 0, n);
             Interlocked.Add(ref total, n);
             Interlocked.Add(ref totalIncoming, n);
             Interlocked.Exchange(ref last, DateTime.Now.ToBinary());

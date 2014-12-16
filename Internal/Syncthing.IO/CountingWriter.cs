@@ -2,33 +2,36 @@
 using System.IO;
 using System.Threading;
 
-namespace Syncthing.Protocol
+namespace Syncthing.IO
 {
     /// <summary>
-    /// Writer that count bytes written.
+    /// Counting writer.
     /// </summary>
     public class CountingWriter : BaseCounting
     {
         /// <summary>
-        /// Initialize the Counting Writer
+        /// Initializes a new instance of the <see cref="Syncthing.IO.CountingWriter"/> class.
         /// </summary>
-        /// <param name="reader"></param>
+        /// <param name="reader">Reader.</param>
         public CountingWriter(Stream reader)
         {
-            Writer = reader;
+            InnerWriter = reader;
         }
 
-        protected Stream Writer { get; set; }
+        /// <summary>
+        /// Gets or sets the inner writer.
+        /// </summary>
+        /// <value>The inner writer.</value>
+        protected Stream InnerWriter { get; set; }
 
         /// <summary>
-        /// Write
+        /// Write the specified data.
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="data">Data.</param>
         public int Write(byte[] data)
         {
             var n = data.Length;
-            Writer.Write(data,0, n);
+            InnerWriter.Write(data, 0, n);
             Interlocked.Add(ref total, n);
             Interlocked.Add(ref totalOutcoming, n);
             Interlocked.Exchange(ref last, DateTime.Now.ToBinary());

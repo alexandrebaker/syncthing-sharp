@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Syncthing.Tests.Protocol")]
+[assembly: AssemblyTitle("Syncthing.IO")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Syncthing.Tests.Protocol")]
+[assembly: AssemblyProduct("Syncthing.IO")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f040eb24-1b0d-4729-ae81-cfd1ae720360")]
+[assembly: Guid("bc943b2f-84f7-466d-875b-ff4abfaf0921")]
 
 // Version information for an assembly consists of the following four values:
 //
