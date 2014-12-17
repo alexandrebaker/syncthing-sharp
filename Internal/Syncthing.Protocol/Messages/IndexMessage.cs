@@ -45,8 +45,6 @@ namespace Syncthing.Protocol.Messages
         /// <value>The files.</value>
         public FileInfo[] Files { get; set; }
 
-
-
         /// <summary>
         /// Encodes the xdr.
         /// </summary>

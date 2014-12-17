@@ -60,7 +60,6 @@
     <Compile Include="Messages\FileInfoTruncated.cs" />
     <Compile Include="Messages\Folder.cs" />
     <Compile Include="Messages\Header.cs" />
-    <Compile Include="Messages\IMessage.cs" />
     <Compile Include="Messages\IndexMessage.cs" />
     <Compile Include="Messages\Option.cs" />
     <Compile Include="Messages\RequestMessage.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Luhn\LuhnFormulaException.cs" />
     <Compile Include="Messages\MaxLengthAttribute.cs" />
     <Compile Include="Messages\MessageExtensions.cs" />
+    <Compile Include="Messages\IXdrEncodable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

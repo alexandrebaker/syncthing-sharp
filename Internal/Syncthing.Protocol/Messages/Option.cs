@@ -1,15 +1,39 @@
-﻿
+﻿using Syncthing.IO.Xdr;
+using System.Runtime.InteropServices;
+
+
 namespace Syncthing.Protocol.Messages
 {
+    /*
+    Option Structure:
+     0                   1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                         Length of Key                         |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /                                                               /
+    \                     Key (variable length)                     \
+    /                                                               /
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                        Length of Value                        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    /                                                               /
+    \                    Value (variable length)                    \
+    /                                                               /
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+    */
     /// <summary>
     /// Option.
     /// </summary>
-    public class Option
+    public class Option : IMessage
     {
         /// <summary>
         /// Gets or sets the key.
         /// </summary>
         /// <value>The key.</value>
+        [MaxLength(64)]
         public string Key { get; set; }
         // max:64
 
@@ -17,7 +41,21 @@ namespace Syncthing.Protocol.Messages
         /// Gets or sets the value.
         /// </summary>
         /// <value>The value.</value>
+        [MaxLength(1024)]
         public string Value { get; set; }
         //max:1024
+
+        /// <summary>
+        /// Encodes the xdr.
+        /// </summary>
+        /// <param name="writer">Writer.</param>
+        public void EncodeXdr([In, Out]XdrWriter writer)
+        {
+            this.ValidateLength();
+
+            writer.WriteString(Key);
+            writer.WriteString(Value);
+        }
+            
     }
 }
