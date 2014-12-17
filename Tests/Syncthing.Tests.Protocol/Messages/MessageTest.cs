@@ -1,8 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
-using Syncthing.Protocol.Messages;
+using Syncthing.Protocol.v1.Messages;
 using Syncthing.IO.Xdr;
-using Syncthing.Protocol;
+using Syncthing.Protocol.v1;
 using System.Text;
 
 namespace Syncthing.Tests.Protocol

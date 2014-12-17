@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Syncthing.Protocol.Messages;
+using Syncthing.Protocol.v1.Messages;
 using Syncthing.IO.Xdr;
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /// <summary>
     /// Message extensions.
@@ -16,7 +16,7 @@ namespace Syncthing.Protocol.Messages
         /// <param name="instance">Instance.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static void ValidateLength<T>(this T instance)
-        where T : IMessage
+        where T : IXdrEncodable
         {
             Type t = typeof(T);
             var props = (from p in t.GetProperties()

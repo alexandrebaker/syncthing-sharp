@@ -1,7 +1,8 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     BlockInfo Structure:
@@ -22,7 +23,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Block info.
     /// </summary>
-    public class BlockInfo : IMessage
+    public class BlockInfo : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the offset.

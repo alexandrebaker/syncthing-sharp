@@ -1,5 +1,5 @@
 ﻿
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /// <summary>
     /// Base file info.

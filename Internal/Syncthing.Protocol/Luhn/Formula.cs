@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace Syncthing.Protocol.Luhn
+namespace Syncthing.Protocol.v1.Luhn
 {
     /// <summary>
     /// Formula.

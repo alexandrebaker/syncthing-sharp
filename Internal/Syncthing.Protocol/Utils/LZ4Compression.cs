@@ -1,7 +1,7 @@
 ﻿using System;
 using LZ4;
 
-namespace Syncthing.Protocol.Utils
+namespace Syncthing.Protocol.v1.Utils
 {
     /// <summary>
     /// Handle LZ4 compression and decompression

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Syncthing.Protocol.Luhn
+namespace Syncthing.Protocol.v1.Luhn
 {
     /// <summary>
     /// Luhn formula exception.

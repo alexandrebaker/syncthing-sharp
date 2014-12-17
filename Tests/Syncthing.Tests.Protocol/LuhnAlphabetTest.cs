@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using Luhn = Syncthing.Protocol.Luhn;
+using Luhn = Syncthing.Protocol.v1.Luhn;
 
 namespace Syncthing.Tests.Protocol
 {

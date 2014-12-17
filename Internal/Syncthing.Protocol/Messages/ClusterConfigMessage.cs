@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using System.Runtime.InteropServices;
 using Syncthing.IO.Xdr;
+using Syncthing.Protocol.v1.Messages;
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1
 {
     /*
     ClusterConfigMessage Structure:
@@ -38,7 +39,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Cluster config message.
     /// </summary>
-    public class ClusterConfigMessage : IMessage
+    public class ClusterConfigMessage : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the name of the client.

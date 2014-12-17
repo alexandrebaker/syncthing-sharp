@@ -1,8 +1,9 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     Device Structure:
@@ -26,7 +27,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Device.
     /// </summary>
-    public class Device : IMessage
+    public class Device : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the I.

@@ -1,8 +1,9 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     FileInfoTruncated Structure:
@@ -37,7 +38,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// File info truncated.
     /// </summary>
-    public class FileInfoTruncated : BaseFileInfo, IMessage
+    public class FileInfoTruncated : BaseFileInfo, IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the number blocks.

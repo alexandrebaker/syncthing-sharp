@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using Syncthing.Protocol.Messages;
+using Syncthing.Protocol.v1.Messages;
 using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
        
@@ -29,7 +29,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Index message.
     /// </summary>
-    public class IndexMessage : IMessage
+    public class IndexMessage : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the folder.

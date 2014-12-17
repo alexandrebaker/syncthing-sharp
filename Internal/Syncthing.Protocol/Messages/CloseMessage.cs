@@ -1,8 +1,9 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     CloseMessage Structure:
@@ -20,7 +21,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Close message.
     /// </summary>
-    public class CloseMessage : IMessage
+    public class CloseMessage : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the reason.

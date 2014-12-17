@@ -2,7 +2,7 @@
 using System.Linq;
 using Syncthing.IO.Xdr;
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /// <summary>
     /// Max length attribute.

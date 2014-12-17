@@ -1,8 +1,9 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     Option Structure:
@@ -27,7 +28,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Option.
     /// </summary>
-    public class Option : IMessage
+    public class Option : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the key.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Syncthing.Protocol
+namespace Syncthing.Protocol.v1
 {
     /// <summary>
     /// Message type.
@@ -44,7 +44,7 @@ namespace Syncthing.Protocol
     }
 }
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /// <summary>
     /// Base file info.

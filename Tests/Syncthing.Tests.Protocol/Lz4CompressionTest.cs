@@ -2,7 +2,7 @@
 using System.Text;
 using LZ4;
 using NUnit.Framework;
-using Syncthing.Protocol.Utils;
+using Syncthing.Protocol.v1.Utils;
 
 namespace Syncthing.Tests.Protocol
 {

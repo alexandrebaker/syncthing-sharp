@@ -1,8 +1,9 @@
 ﻿using System.Runtime.InteropServices;
 using Syncthing.IO.Xdr;
+using Syncthing.Protocol.v1.Messages;
 
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     RequestMessage Structure:
@@ -32,7 +33,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Request message.
     /// </summary>
-    public class RequestMessage : IMessage
+    public class RequestMessage : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the folder.

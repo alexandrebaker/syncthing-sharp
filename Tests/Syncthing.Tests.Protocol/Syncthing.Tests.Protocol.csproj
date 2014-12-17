@@ -29,11 +29,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="LZ4">
       <HintPath>..\..\packages\lz4net.1.0.5.93\lib\net40-client\LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -48,13 +48,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Internal\Syncthing.Protocol\Syncthing.Protocol.csproj">
-      <Project>{769C0580-0025-471F-B712-A07B08768B30}</Project>
-      <Name>Syncthing.Protocol</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Internal\Syncthing.IO\Syncthing.IO.csproj">
       <Project>{18579551-8987-4EA5-8DCA-6AD65FFDEB50}</Project>
       <Name>Syncthing.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Internal\Syncthing.Protocol\Syncthing.Protocol.v1.csproj">
+      <Project>{769C0580-0025-471F-B712-A07B08768B30}</Project>
+      <Name>Syncthing.Protocol.v1</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

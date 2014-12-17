@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
 
@@ -42,7 +43,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// File info.
     /// </summary>
-    public class FileInfo : BaseFileInfo, IMessage
+    public class FileInfo : BaseFileInfo, IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the blocks.

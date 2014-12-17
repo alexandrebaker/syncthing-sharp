@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Base32;
 
-namespace Syncthing.Protocol
+namespace Syncthing.Protocol.v1
 {
     /// <summary>
     /// Device identifier.

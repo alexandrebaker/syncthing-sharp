@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using Syncthing.Protocol.Messages;
+using Syncthing.Protocol.v1.Messages;
 
 
 namespace Syncthing.Tests.Protocol

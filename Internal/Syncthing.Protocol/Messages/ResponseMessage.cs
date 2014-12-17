@@ -1,8 +1,9 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     ResponseMessage Structure:
@@ -21,7 +22,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Response message.
     /// </summary>
-    public class ResponseMessage : IMessage
+    public class ResponseMessage : IXdrEncodable
     {
         /// <summary>
         /// Gets or sets the data.

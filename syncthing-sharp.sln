@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{C0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Net", "Internal\Syncthing.Net\Syncthing.Net.csproj", "{131659DF-C3BC-490D-8358-E2A07DA28434}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Protocol", "Internal\Syncthing.Protocol\Syncthing.Protocol.csproj", "{769C0580-0025-471F-B712-A07B08768B30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.Protocol.v1", "Internal\Syncthing.Protocol\Syncthing.Protocol.v1.csproj", "{769C0580-0025-471F-B712-A07B08768B30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncthing.IO", "Internal\Syncthing.IO\Syncthing.IO.csproj", "{18579551-8987-4EA5-8DCA-6AD65FFDEB50}"
 EndProject
@@ -52,9 +52,6 @@ Global
 		{18579551-8987-4EA5-8DCA-6AD65FFDEB50} = {C034ED3C-34DC-4AC0-8C74-0EEB7BF6E172}
 		{F391E929-EBAB-418D-B391-B153CA3591DD} = {8981524B-3EEB-46FA-A0B6-062642F692F8}
 		{5671EDCC-A810-4333-9755-FB184E18EEFF} = {83AEFC39-2FC7-4CB4-B5FD-12FC4BE935A1}
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Tests\Syncthing.Tests.Protocol\Syncthing.Tests.Protocol.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

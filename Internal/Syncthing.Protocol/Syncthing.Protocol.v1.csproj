@@ -7,7 +7,7 @@
     <ProjectGuid>{769C0580-0025-471F-B712-A07B08768B30}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Syncthing.Protocol</RootNamespace>
+    <RootNamespace>Syncthing.Protocol.v1</RootNamespace>
     <AssemblyName>Syncthing.Protocol</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

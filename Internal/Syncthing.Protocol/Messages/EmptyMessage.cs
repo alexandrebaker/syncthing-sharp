@@ -1,8 +1,9 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
+using Syncthing.Protocol.v1.Messages;
 
 
-namespace Syncthing.Protocol.Messages
+namespace Syncthing.Protocol.v1.Messages
 {
     /*
     EmptyMessage Structure:
@@ -15,7 +16,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Empty message.
     /// </summary>
-    public class EmptyMessage : IMessage
+    public class EmptyMessage : IXdrEncodable
     {
         /// <summary>
         /// Encodes the xdr.
