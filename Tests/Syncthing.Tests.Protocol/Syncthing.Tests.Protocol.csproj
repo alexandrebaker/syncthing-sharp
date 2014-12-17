@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5671EDCC-A810-4333-9755-FB184E18EEFF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>yncthing.Tests.Protocol</RootNamespace>
+    <RootNamespace>Syncthing.Tests.Protocol</RootNamespace>
     <AssemblyName>yncthing.Tests.Protocol</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -41,6 +41,7 @@
     <Compile Include="LuhnAlphabetTest.cs" />
     <Compile Include="Lz4CompressionTest.cs" />
     <Compile Include="MessageHeaderTest.cs" />
+    <Compile Include="Messages\MessageTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -51,5 +52,12 @@
       <Project>{769C0580-0025-471F-B712-A07B08768B30}</Project>
       <Name>Syncthing.Protocol</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Internal\Syncthing.IO\Syncthing.IO.csproj">
+      <Project>{18579551-8987-4EA5-8DCA-6AD65FFDEB50}</Project>
+      <Name>Syncthing.IO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Messages\" />
   </ItemGroup>
 </Project>

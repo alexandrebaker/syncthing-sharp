@@ -4,7 +4,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Close message.
     /// </summary>
-    public class CloseMessage : IMessage
+    public class CloseMessage// : IMessage
     {
         /// <summary>
         /// Gets or sets the reason.

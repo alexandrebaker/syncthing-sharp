@@ -5,7 +5,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Cluster config message.
     /// </summary>
-    public class ClusterConfigMessage : IMessage
+    public class ClusterConfigMessage //: IMessage
     {
         /// <summary>
         /// Gets or sets the name of the client.

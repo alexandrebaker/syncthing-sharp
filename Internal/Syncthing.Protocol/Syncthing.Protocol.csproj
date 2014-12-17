@@ -69,6 +69,8 @@
     <Compile Include="Utils\LZ4Compression.cs" />
     <Compile Include="Luhn\Formula.cs" />
     <Compile Include="Luhn\LuhnFormulaException.cs" />
+    <Compile Include="Messages\MaxLengthAttribute.cs" />
+    <Compile Include="Messages\MessageExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -82,4 +84,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <ProjectReference Include="..\Syncthing.IO\Syncthing.IO.csproj">
+      <Project>{18579551-8987-4EA5-8DCA-6AD65FFDEB50}</Project>
+      <Name>Syncthing.IO</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

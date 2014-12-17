@@ -10,6 +10,7 @@ namespace Syncthing.Protocol.Messages
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
+        [MaxLength(8192)]
         public string Name { get; set; }
 
         /// <summary>

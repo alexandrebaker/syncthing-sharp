@@ -4,7 +4,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Request message.
     /// </summary>
-    public class RequestMessage : IMessage
+    public class RequestMessage //: IMessage
     {
         /// <summary>
         /// Gets or sets the folder.

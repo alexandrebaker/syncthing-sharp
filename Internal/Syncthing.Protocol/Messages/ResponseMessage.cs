@@ -4,7 +4,7 @@ namespace Syncthing.Protocol.Messages
     /// <summary>
     /// Response message.
     /// </summary>
-    public class ResponseMessage : IMessage
+    public class ResponseMessage //: IMessage
     {
         /// <summary>
         /// Gets or sets the data.
