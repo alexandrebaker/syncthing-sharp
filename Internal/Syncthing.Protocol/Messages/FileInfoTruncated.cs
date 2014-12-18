@@ -38,7 +38,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// File info truncated.
     /// </summary>
-    public class FileInfoTruncated : BaseFileInfo, IXdrEncodable
+    public class FileInfoTruncated : BaseFileInfo, IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the number blocks.
@@ -83,6 +83,20 @@ namespace Syncthing.Protocol.v1.Messages
             writer.WriteUInt64(Version);
             writer.WriteUInt64(LocalVersion);
             writer.WriteUInt(NumBlocks);
+        }
+
+        /// <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.Name = reader.ReadStringMax(8192);
+            this.Flags = reader.ReadUInt();
+            this.Modified = (long)reader.ReadUInt64();
+            this.Version = reader.ReadUInt64();
+            this.LocalVersion = reader.ReadUInt64();
+            this.NumBlocks = reader.ReadUInt();
         }
     }
 }

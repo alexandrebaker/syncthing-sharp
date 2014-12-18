@@ -28,7 +28,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Option.
     /// </summary>
-    public class Option : IXdrEncodable
+    public class Option : IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the key.
@@ -57,6 +57,15 @@ namespace Syncthing.Protocol.v1.Messages
             writer.WriteString(Key);
             writer.WriteString(Value);
         }
-            
+
+        /// <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.Key = reader.ReadStringMax(64);
+            this.Value = reader.ReadStringMax(1024);
+        }
     }
 }

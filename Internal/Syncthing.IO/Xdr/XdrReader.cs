@@ -25,9 +25,24 @@ namespace Syncthing.IO.Xdr
         /// Reads the raw bytes.
         /// </summary>
         /// <returns>The raw bytes.</returns>
-        public byte[] ReadRaw()
+        public byte[] ReadBytes()
+        {
+            return ReadBytesMax(0);
+        }
+
+        /// <summary>
+        /// Reads the raw X bytes.
+        /// </summary>
+        /// <returns>The raw.</returns>
+        /// <param name="max">Max.</param>
+        public byte[] ReadBytesMax(uint max)
         {
             int length = (int)ReadUInt();
+
+            if (max > 0 && length > max)
+                throw new XdrElementSizeExceeded("bytes field", length, (int)max);
+            
+
             byte[] utf8Bytes = new byte[length];
             utf8Bytes = InnerReader.ReadBytes(length);
 
@@ -46,7 +61,17 @@ namespace Syncthing.IO.Xdr
         /// <returns>The string.</returns>
         public string ReadString()
         {
-            return Encoding.UTF8.GetString(ReadRaw());
+            return Encoding.UTF8.GetString(ReadBytes());
+        }
+
+        /// <summary>
+        /// Reads a string for X bytes.
+        /// </summary>
+        /// <returns>The string max.</returns>
+        /// <param name="max">Max.</param>
+        public string ReadStringMax(uint max)
+        {
+            return Encoding.UTF8.GetString(ReadBytesMax(max));
         }
 
         /// <summary>

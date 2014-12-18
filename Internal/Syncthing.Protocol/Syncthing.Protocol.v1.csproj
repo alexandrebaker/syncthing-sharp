@@ -70,7 +70,6 @@
     <Compile Include="Luhn\LuhnFormulaException.cs" />
     <Compile Include="Messages\MaxLengthAttribute.cs" />
     <Compile Include="Messages\MessageExtensions.cs" />
-    <Compile Include="Messages\IXdrEncodable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

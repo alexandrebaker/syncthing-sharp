@@ -21,7 +21,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Close message.
     /// </summary>
-    public class CloseMessage : IXdrEncodable
+    public class CloseMessage : IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the reason.
@@ -39,6 +39,15 @@ namespace Syncthing.Protocol.v1.Messages
             this.ValidateLength();
 
             writer.WriteString(Reason);
+        }
+
+        /// <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.Reason = reader.ReadStringMax(1024);
         }
             
     }

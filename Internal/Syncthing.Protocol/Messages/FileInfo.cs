@@ -43,7 +43,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// File info.
     /// </summary>
-    public class FileInfo : BaseFileInfo, IXdrEncodable
+    public class FileInfo : BaseFileInfo, IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the blocks.
@@ -78,7 +78,7 @@ namespace Syncthing.Protocol.v1.Messages
         /// Encodes the xdr.
         /// </summary>
         /// <param name="writer">Writer.</param>
-        public void EncodeXdr([In, Out]XdrWriter writer)
+        public void EncodeXdr([In, Out] XdrWriter writer)
         {
             this.ValidateLength();
 
@@ -92,5 +92,25 @@ namespace Syncthing.Protocol.v1.Messages
             foreach (var b in Blocks)
                 b.EncodeXdr(writer);
         }
+
+        /// <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.Name = reader.ReadStringMax(8192);
+            this.Flags = reader.ReadUInt();
+            this.Modified = (long)reader.ReadUInt64();
+            this.Version = reader.ReadUInt64();
+            this.LocalVersion = reader.ReadUInt64();
+
+            int blocksSize = (int)reader.ReadUInt();
+            this.Blocks = new BlockInfo[blocksSize];
+            foreach (var b in Blocks)
+                b.DecodeXdr(reader);
+
+        }
+
     }
 }

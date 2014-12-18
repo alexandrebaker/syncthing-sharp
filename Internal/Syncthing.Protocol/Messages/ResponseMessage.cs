@@ -22,7 +22,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Response message.
     /// </summary>
-    public class ResponseMessage : IXdrEncodable
+    public class ResponseMessage : IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the data.
@@ -37,6 +37,15 @@ namespace Syncthing.Protocol.v1.Messages
         public void EncodeXdr([In,Out]XdrWriter writer)
         {
             writer.WriteBytes(Data);
+        }
+
+        /// <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.Data = reader.ReadBytes();
         }
     }
 }

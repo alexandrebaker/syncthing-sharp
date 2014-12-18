@@ -1,7 +1,7 @@
 ﻿using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
 
-namespace Syncthing.Protocol.v1.Messages
+namespace Syncthing.IO.Xdr
 {
     /// <summary>
     /// IXdrEncodable definition.

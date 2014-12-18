@@ -46,6 +46,8 @@
     <Compile Include="Xdr\XdrReader.cs" />
     <Compile Include="Xdr\XdrWriter.cs" />
     <Compile Include="Xdr\XdrElementSizeExceeded.cs" />
+    <Compile Include="Xdr\IXdrEncodable.cs" />
+    <Compile Include="Xdr\IXdrDecodable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

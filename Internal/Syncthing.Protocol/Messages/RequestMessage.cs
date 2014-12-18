@@ -33,7 +33,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Request message.
     /// </summary>
-    public class RequestMessage : IXdrEncodable
+    public class RequestMessage : IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the folder.
@@ -73,6 +73,18 @@ namespace Syncthing.Protocol.v1.Messages
             writer.WriteString(Name);
             writer.WriteUInt64(Offset);
             writer.WriteUInt(Size);
+        }
+
+        /// <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.Folder = reader.ReadStringMax(64);
+            this.Name = reader.ReadStringMax(8192);
+            this.Offset = reader.ReadUInt64();
+            this.Size = reader.ReadUInt();
         }
     }
 }

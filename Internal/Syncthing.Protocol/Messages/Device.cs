@@ -27,7 +27,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Device.
     /// </summary>
-    public class Device : IXdrEncodable
+    public class Device : IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the I.
@@ -59,6 +59,17 @@ namespace Syncthing.Protocol.v1.Messages
             writer.WriteBytes(ID);
             writer.WriteUInt(Flags);
             writer.WriteUInt64(MaxLocalVersion);
+        }
+
+        // <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.ID = reader.ReadBytesMax(64);
+            this.Flags = reader.ReadUInt();
+            this.MaxLocalVersion = reader.ReadUInt64();
         }
             
     }

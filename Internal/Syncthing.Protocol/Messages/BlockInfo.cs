@@ -23,7 +23,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Block info.
     /// </summary>
-    public class BlockInfo : IXdrEncodable
+    public class BlockInfo : IXdrEncodable, IXdrDecodable
     {
         /// <summary>
         /// Gets or sets the offset.
@@ -66,6 +66,16 @@ namespace Syncthing.Protocol.v1.Messages
 
             writer.WriteUInt(Size);
             writer.WriteBytes(Hash);
+        }
+
+        /// <summary>
+        /// Decode the xdr.
+        /// </summary>
+        /// <param name="reader">Reader.</param>
+        public void DecodeXdr([In, Out] XdrReader reader)
+        {
+            this.Size = reader.ReadUInt();
+            this.Hash = reader.ReadBytesMax(64);
         }
     }
 }
