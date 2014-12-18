@@ -107,8 +107,12 @@ namespace Syncthing.Protocol.v1.Messages
 
             int blocksSize = (int)reader.ReadUInt();
             this.Blocks = new BlockInfo[blocksSize];
-            foreach (var b in Blocks)
-                b.DecodeXdr(reader);
+            for (int i = 0; i < blocksSize; i++)
+            {
+                this.Blocks[i] = new BlockInfo();
+                this.Blocks[i].DecodeXdr(reader);
+            }
+                
 
         }
 

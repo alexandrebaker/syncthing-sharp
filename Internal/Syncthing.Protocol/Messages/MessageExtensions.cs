@@ -21,7 +21,8 @@ namespace Syncthing.Protocol.v1.Messages
             Type t = typeof(T);
             var props = (from p in t.GetProperties()
                                   let attr = p.GetCustomAttributes(typeof(MaxLengthAttribute), true)
-                                  where attr.Length == 1
+                                  let val = p.GetValue(instance)
+                                  where attr.Length == 1 && val != null
                                   select new { PropertyName = p.Name, PropertyLength = ((dynamic)p.GetValue(instance)).Length, Attribute = attr[0] as MaxLengthAttribute})
                                  .Where(p => p.PropertyLength > p.Attribute.Length);
                                 

@@ -43,6 +43,7 @@
     <Compile Include="CountingReader.cs" />
     <Compile Include="CountingWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IgnoreEncodeAttribute.cs" />
     <Compile Include="Xdr\XdrReader.cs" />
     <Compile Include="Xdr\XdrWriter.cs" />
     <Compile Include="Xdr\XdrElementSizeExceeded.cs" />
@@ -57,7 +58,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Xdr\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

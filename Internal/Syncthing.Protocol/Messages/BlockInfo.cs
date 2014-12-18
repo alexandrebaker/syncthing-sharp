@@ -1,4 +1,5 @@
-﻿using Syncthing.IO.Xdr;
+﻿using Syncthing.IO;
+using Syncthing.IO.Xdr;
 using System.Runtime.InteropServices;
 using Syncthing.Protocol.v1.Messages;
 
@@ -29,6 +30,7 @@ namespace Syncthing.Protocol.v1.Messages
         /// Gets or sets the offset.
         /// </summary>
         /// <value>The offset.</value>
+        [IgnoreEncode]
         public long Offset { get; set; }
 
         /// <summary>

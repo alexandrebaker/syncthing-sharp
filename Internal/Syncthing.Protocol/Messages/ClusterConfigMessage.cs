@@ -120,17 +120,23 @@ namespace Syncthing.Protocol.v1
                 throw new XdrElementSizeExceeded("Folders", foldersSize, 64);
 
             this.Folders = new Folder[foldersSize];
-            foreach (var f in Folders)
-                f.DecodeXdr(reader);
-    
+            for (int i = 0; i < foldersSize; i++)
+            {
+                this.Folders[i] = new Folder();
+                this.Folders[i].DecodeXdr(reader);
+            }
+
             // Options
             int optionsSize = (int)reader.ReadUInt();
             if (optionsSize > 64)
                 throw new XdrElementSizeExceeded("Options", optionsSize, 64);
 
             this.Options = new Option[optionsSize];
-            foreach (var o in Options)
-                o.DecodeXdr(reader);
+            for (int i = 0; i < optionsSize; i++)
+            {
+                this.Options[i] = new Option();
+                this.Options[i].DecodeXdr(reader);
+            }
         }
     }
 }

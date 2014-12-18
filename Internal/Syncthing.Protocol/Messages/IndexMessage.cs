@@ -71,8 +71,11 @@ namespace Syncthing.Protocol.v1.Messages
             this.Folder = reader.ReadStringMax(64);
             int filesSize = (int)reader.ReadUInt();
             this.Files = new FileInfo[filesSize];
-            foreach (var f in Files)
-                f.DecodeXdr(reader);
+            for (int i = 0; i < filesSize; i++)
+            {
+                this.Files[i] = new FileInfo();
+                this.Files[i].DecodeXdr(reader);
+            }
         }
     }
 }

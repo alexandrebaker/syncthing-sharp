@@ -30,9 +30,9 @@ namespace Syncthing.Protocol.v1.Messages
     public class Device : IXdrEncodable, IXdrDecodable
     {
         /// <summary>
-        /// Gets or sets the I.
+        /// Gets or sets the ID.
         /// </summary>
-        /// <value>The I.</value>
+        /// <value>The ID.</value>
         [MaxLength(32)]
         public byte[] ID { get; set; }
 

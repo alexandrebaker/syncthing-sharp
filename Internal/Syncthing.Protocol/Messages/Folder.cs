@@ -66,8 +66,12 @@ namespace Syncthing.Protocol.v1.Messages
             this.ID = reader.ReadStringMax(64);
             int devicesSize = (int)reader.ReadUInt();   
             this.Devices = new Device[devicesSize];
-            foreach (var d in Devices)
-                d.DecodeXdr(reader);
+            for (int i = 0; i < devicesSize; i++)
+            {
+                this.Devices[i] = new Device();
+                this.Devices[i].DecodeXdr(reader);
+            }
+               
 
         }
     }
