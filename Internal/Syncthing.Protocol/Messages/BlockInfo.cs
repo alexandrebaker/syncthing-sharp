@@ -24,7 +24,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Block info.
     /// </summary>
-    public class BlockInfo : IXdrEncodable, IXdrDecodable
+    public class BlockInfo : Marshalable
     {
         /// <summary>
         /// Gets or sets the offset.
@@ -62,7 +62,7 @@ namespace Syncthing.Protocol.v1.Messages
         /// </summary>
         /// <returns>The xdr.</returns>
         /// <param name="writer">Writer.</param>
-        public void EncodeXdr([In, Out]XdrWriter writer)
+        public override void EncodeXdr([In, Out]XdrWriter writer)
         {
             this.ValidateLength();
 
@@ -74,7 +74,7 @@ namespace Syncthing.Protocol.v1.Messages
         /// Decode the xdr.
         /// </summary>
         /// <param name="reader">Reader.</param>
-        public void DecodeXdr([In, Out] XdrReader reader)
+        public override void DecodeXdr([In, Out] XdrReader reader)
         {
             this.Size = reader.ReadUInt();
             this.Hash = reader.ReadBytesMax(64);

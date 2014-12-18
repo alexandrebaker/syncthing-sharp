@@ -17,7 +17,7 @@ namespace Syncthing.Protocol.v1.Messages
         public uint Length { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Syncthing.Protocol.Messages.MaxLengthAttribute"/> class.
+        /// Initializes a new instance of the <see cref="MaxLengthAttribute"/> class.
         /// </summary>
         public MaxLengthAttribute()
         {
@@ -25,7 +25,7 @@ namespace Syncthing.Protocol.v1.Messages
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Syncthing.Protocol.Messages.MaxLengthAttribute"/> class.
+        /// Initializes a new instance of the <see cref="MaxLengthAttribute"/> class.
         /// </summary>
         /// <param name="length">Length.</param>
         public MaxLengthAttribute(uint length)

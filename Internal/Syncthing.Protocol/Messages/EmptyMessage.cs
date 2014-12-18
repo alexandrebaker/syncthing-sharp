@@ -16,13 +16,13 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// Empty message.
     /// </summary>
-    public class EmptyMessage : IXdrEncodable, IXdrDecodable
+    public class EmptyMessage : Marshalable
     {
         /// <summary>
         /// Encodes the xdr.
         /// </summary>
         /// <param name="writer">Writer.</param>
-        public void EncodeXdr([In, Out]XdrWriter writer)
+        public override void EncodeXdr([In, Out]XdrWriter writer)
         {
             // Empty Message don't write anything into the writer.
         }
@@ -31,7 +31,7 @@ namespace Syncthing.Protocol.v1.Messages
         /// Decode the xdr.
         /// </summary>
         /// <param name="reader">Reader.</param>
-        public void DecodeXdr([In, Out] XdrReader reader)
+        public override void DecodeXdr([In, Out] XdrReader reader)
         {
             // Empty Message don't read anything from the reader.
         }

@@ -43,7 +43,7 @@ namespace Syncthing.Protocol.v1.Messages
     /// <summary>
     /// File info.
     /// </summary>
-    public class FileInfo : BaseFileInfo, IXdrEncodable, IXdrDecodable
+    public class FileInfo : BaseFileInfo
     {
         /// <summary>
         /// Gets or sets the blocks.
@@ -78,7 +78,7 @@ namespace Syncthing.Protocol.v1.Messages
         /// Encodes the xdr.
         /// </summary>
         /// <param name="writer">Writer.</param>
-        public void EncodeXdr([In, Out] XdrWriter writer)
+        public override void EncodeXdr([In, Out] XdrWriter writer)
         {
             this.ValidateLength();
 
@@ -97,7 +97,7 @@ namespace Syncthing.Protocol.v1.Messages
         /// Decode the xdr.
         /// </summary>
         /// <param name="reader">Reader.</param>
-        public void DecodeXdr([In, Out] XdrReader reader)
+        public override void DecodeXdr([In, Out] XdrReader reader)
         {
             this.Name = reader.ReadStringMax(8192);
             this.Flags = reader.ReadUInt();

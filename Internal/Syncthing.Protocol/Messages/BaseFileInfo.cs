@@ -1,10 +1,12 @@
 ﻿
+using Syncthing.IO.Xdr;
+
 namespace Syncthing.Protocol.v1.Messages
 {
     /// <summary>
     /// Base file info.
     /// </summary>
-    public abstract partial class BaseFileInfo
+    public abstract partial class BaseFileInfo : Marshalable
     {
         /// <summary>
         /// Gets or sets the name.

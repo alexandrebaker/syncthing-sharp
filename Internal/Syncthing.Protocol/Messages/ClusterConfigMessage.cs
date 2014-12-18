@@ -39,7 +39,7 @@ namespace Syncthing.Protocol.v1
     /// <summary>
     /// Cluster config message.
     /// </summary>
-    public class ClusterConfigMessage : IXdrEncodable, IXdrDecodable
+    public class ClusterConfigMessage : Marshalable
     {
         /// <summary>
         /// Gets or sets the name of the client.
@@ -89,7 +89,7 @@ namespace Syncthing.Protocol.v1
         /// Encodes the xdr.
         /// </summary>
         /// <param name="writer">Writer.</param>
-        public void EncodeXdr([In,Out]XdrWriter writer)
+        public override void EncodeXdr([In,Out]XdrWriter writer)
         {
             this.ValidateLength();
            
@@ -109,7 +109,7 @@ namespace Syncthing.Protocol.v1
         /// Decode the xdr.
         /// </summary>
         /// <param name="reader">Reader.</param>
-        public void DecodeXdr([In, Out] XdrReader reader)
+        public override void DecodeXdr([In, Out] XdrReader reader)
         {
             this.ClientName = reader.ReadStringMax(64);
             this.ClientVersion = reader.ReadStringMax(64);
