@@ -18,7 +18,7 @@ namespace Syncthing.IO.Xdr
         public int Total { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Syncthing.IO.XdrWriter"/> class.
+        /// Initializes a new instance of the <see cref="XdrWriter"/> class.
         /// </summary>
         /// <param name="innerWriter">Inner writer.</param>
         public XdrWriter(Stream innerWriter)
