@@ -58,6 +58,7 @@ namespace Syncthing.Protocol.v1
         /// <param name="size">Size.</param>
         public byte[] Request(string folder, string name, long offset, int size)
         {
+			return null;
         }
 
         /// <summary>
@@ -73,6 +74,7 @@ namespace Syncthing.Protocol.v1
         /// </summary>
         public Statistics Statistics()
         {
+			return null;
         }
     }
 }

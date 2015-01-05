@@ -31,7 +31,7 @@ namespace Syncthing.Tests.Protocol
         [ExpectedException(typeof(Luhn.LuhnFormulaException))]
         public void TestInvalidInitializationString()
         {
-            var a = new Luhn.Formula("");
+            new Luhn.Formula("");
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace Syncthing.Tests.Protocol
         public void TestInvalidString()
         {
             var a = new Luhn.Formula("ABC");
-            var c = a.Generate("7992739871");
+            a.Generate("7992739871");
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace Syncthing.Tests.Protocol
         public void TestBadAlphabet()
         {
             var a = new Luhn.Formula("01234566789");
-            var c = a.Generate("7992739871");
+           	a.Generate("7992739871");
         }
 
         [Test]

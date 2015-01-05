@@ -37,7 +37,12 @@
     <Compile Include="Broadcast\IBroadcast.cs" />
     <Compile Include="Broadcast\BroadcastResponse.cs" />
     <Compile Include="Broadcast\BroadcastRequest.cs" />
+    <Compile Include="UPnP\InternetGatewayDevice.cs" />
+    <Compile Include="UPnP\InternetGatewayDeviceService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UPnP\" />
+  </ItemGroup>
 </Project>
